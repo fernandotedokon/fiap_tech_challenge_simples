@@ -129,3 +129,5 @@ def listar_categorias():
         raise HTTPException(status_code=404, detail="Dados não encontrados.")
     categorias = sorted(set(book["category"] for book in books))
     return {"categories": categorias}
+
+handler = Mangum(app)  # 👈 necessário para funcionar no Vercel
