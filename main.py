@@ -7,7 +7,7 @@ import os
 app = FastAPI(title="API Biblioteca")
 
 BASE_URL = "https://books.toscrape.com/"
-DATA_DIR = "data"
+DATA_DIR = "/tmp/data"
 CSV_PATH = os.path.join(DATA_DIR, "books.csv")
 
 os.makedirs(DATA_DIR, exist_ok=True)
