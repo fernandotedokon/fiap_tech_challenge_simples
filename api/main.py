@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
+from mangum import Mangum
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
