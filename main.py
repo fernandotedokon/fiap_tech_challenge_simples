@@ -7,7 +7,7 @@ import os
 app = FastAPI(title="API Biblioteca")
 
 BASE_URL = "https://books.toscrape.com/"
-DATA_DIR = "/tmp/data"
+DATA_DIR = "/tmp"
 CSV_PATH = os.path.join(DATA_DIR, "books.csv")
 
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -81,10 +81,6 @@ def extrair_e_salvar(pages: int):
             books = extrair_books(pages=pages)
         else:
             raise HTTPException(status_code=400, detail="Número de páginas deve ser entre 1 e 5 ou 50 para extrair todas as paginas")
-        #if pages < 0 or pages > 5 or pages != 50:
-        #    raise HTTPException(status_code=400, detail="Número de páginas deve ser entre 1 e menor que 5 ou 50 para extrair todas as paginas")
-        #else:
-        #    books = extrair_books(pages=pages)
         salvar_csv(books)
         return {"message": f"{len(books)} livros salvos com sucesso."}
     except Exception as e:
